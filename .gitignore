@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# pnpm writes a placeholder build-scripts file we don't use (single-package repo)
+pnpm-workspace.yaml
