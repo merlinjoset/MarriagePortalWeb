@@ -1,22 +1,21 @@
 # ---- Dependencies ----
 FROM node:22-slim AS deps
 WORKDIR /app
-RUN npm install -g pnpm@11.8.0
-COPY package.json pnpm-lock.yaml ./
-# Not --frozen-lockfile: tolerate any host/lockfile edge case on the Linux builder.
-RUN pnpm install --no-frozen-lockfile
+COPY package.json ./
+# npm install (not ci, no committed lock) so the Linux builder resolves and fetches
+# the correct platform-specific binaries (next-swc, tailwind oxide, etc.).
+RUN npm install --no-audit --no-fund
 
 # ---- Build ----
 FROM node:22-slim AS build
 WORKDIR /app
-RUN npm install -g pnpm@11.8.0
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 # NEXT_PUBLIC_* values are inlined at build time, so the API URL must be known here.
 # Render passes service env vars to the build; declare it as a build arg.
 ARG NEXT_PUBLIC_API_URL
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
-RUN pnpm build
+RUN npm run build
 
 # ---- Runtime (Next.js standalone) ----
 FROM node:22-slim AS runtime
