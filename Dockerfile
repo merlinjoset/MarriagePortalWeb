@@ -21,8 +21,10 @@ RUN npm run build
 FROM node:22-slim AS runtime
 WORKDIR /app
 ENV NODE_ENV=production
+# Bind to all interfaces (Next standalone defaults to localhost, which Render cannot reach -> 502).
+ENV HOSTNAME=0.0.0.0
 COPY --from=build /app/.next/standalone ./
 COPY --from=build /app/.next/static ./.next/static
 COPY --from=build /app/public ./public
-# server.js honours $PORT, which Render sets at runtime (fallback 3000 for local runs).
+# server.js honours $PORT (Render sets it) and $HOSTNAME.
 ENTRYPOINT ["sh", "-c", "node server.js"]
