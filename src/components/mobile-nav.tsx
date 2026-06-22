@@ -11,15 +11,18 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { useT } from "@/lib/i18n";
+import { useMemberShortlist } from "@/lib/member-shortlist";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
   const { t } = useT();
+  const { member } = useMemberShortlist();
   const nav = [
     { href: "/", label: t("nav_home") },
     { href: "/browse", label: t("nav_browse") },
     { href: "/how-it-works", label: t("nav_how") },
     { href: "/shortlist", label: t("nav_shortlist") },
+    ...(member ? [{ href: "/requests", label: t("nav_requests") }] : []),
     { href: "/register", label: t("nav_register") },
   ];
   return (

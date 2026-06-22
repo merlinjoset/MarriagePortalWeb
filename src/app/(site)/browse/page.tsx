@@ -14,6 +14,7 @@ export default async function BrowsePage({
     gender: sp.gender,
     denomination: sp.denomination,
     congregation: sp.congregation,
+    live: true, // public listing - only Verified/Active profiles
     page: sp.page ? Number(sp.page) : 1,
   };
 

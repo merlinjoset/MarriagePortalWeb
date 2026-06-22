@@ -4,7 +4,7 @@ import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useT } from "@/lib/i18n";
-import { useShortlist } from "@/lib/use-shortlist";
+import { useMemberShortlist } from "@/lib/member-shortlist";
 
 const gradients = [
   "from-[#6b1f2a] to-[#3f6b54]",
@@ -16,16 +16,25 @@ const initials = (n: string) => n.split(" ").map((w) => w[0]).slice(0, 2).join("
 
 export default function ShortlistPage() {
   const { t } = useT();
-  const { items, ready, remove } = useShortlist();
+  const { items, ready, remove, member, openSignIn } = useMemberShortlist();
 
   return (
     <section className="mx-auto max-w-6xl px-5 py-12">
       <div className="mb-6">
         <h1 className="text-2xl font-bold">{t("sl_h")}</h1>
-        <p className="text-sm text-muted-foreground">{t("sl_sub")}</p>
+        <p className="text-sm text-muted-foreground">
+          {member ? `${t("sl_sub")} (${t("signed_in_as")}: ${member.name})` : t("sl_sub")}
+        </p>
       </div>
 
-      {!ready ? null : items.length === 0 ? (
+      {!ready ? null : !member ? (
+        <Card className="flex flex-col items-center gap-4 p-10 text-center">
+          <p className="max-w-sm text-muted-foreground">{t("sl_signin_prompt")}</p>
+          <Button onClick={openSignIn} className="bg-gold text-maroon hover:bg-gold! hover:brightness-105">
+            {t("signin_btn")}
+          </Button>
+        </Card>
+      ) : items.length === 0 ? (
         <p className="text-muted-foreground">{t("sl_empty")}</p>
       ) : (
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

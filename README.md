@@ -1,4 +1,4 @@
-# MarriagePortalWeb — CSI Holy Matrimony (Web)
+# MarriagePortalWeb - CSI Holy Matrimony (Web)
 
 Marriage portal front end for the CSI Tamil Parish (Dubai). Built with **Next.js 16 + shadcn/ui**;
 it talks to the **BackendPortalAPI** (.NET 10) over REST.

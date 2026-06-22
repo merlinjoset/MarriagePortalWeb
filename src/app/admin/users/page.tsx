@@ -123,7 +123,7 @@ export default function UsersPage() {
       />
       <div className="p-7">
         <div className="mb-4 rounded-lg border border-gold/30 bg-gold/10 px-4 py-3 text-sm text-[#7a5a10]">
-          🔐 These are staff accounts (presbyters, moderators, office staff) — not matrimony members. New users start as <b>Invited</b>.
+          🔐 These are staff accounts (presbyters, moderators, office staff) - not matrimony members. New users start as <b>Invited</b>.
         </div>
         <Card className="p-0">
           {users === null ? (

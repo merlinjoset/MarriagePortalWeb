@@ -89,7 +89,7 @@ export default function InterestsPage() {
                           </Button>
                         </div>
                       ) : (
-                        <span className="text-[12.5px] text-muted-foreground">—</span>
+                        <span className="text-[12.5px] text-muted-foreground">-</span>
                       )}
                     </td>
                   </tr>

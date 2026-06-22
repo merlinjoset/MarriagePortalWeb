@@ -74,7 +74,7 @@ export default function AdminDashboard() {
                   </div>
                 ))
               : recent.map((m, i) => (
-                  <Link key={m.id} href={`/profiles/${m.id}`} className="flex items-center gap-3 px-5 py-3 hover:bg-muted/40">
+                  <Link key={m.id} href={`/admin/members/${m.id}`} className="flex items-center gap-3 px-5 py-3 hover:bg-muted/40">
                     <Avatar name={m.fullName} photo={m.mainPhotoUrl} i={i} />
                     <div>
                       <div className="text-sm font-semibold">{m.fullName}</div>

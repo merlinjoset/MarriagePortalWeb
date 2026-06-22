@@ -55,6 +55,7 @@ export function statusTone(status: string): "green" | "amber" | "red" | "grey" {
     case "Pending":
       return "amber";
     case "Suspended":
+    case "Rejected":
       return "red";
     default:
       return "grey";

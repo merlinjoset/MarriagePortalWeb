@@ -18,8 +18,9 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { StatusBadge } from "@/components/status-badge";
+import { ContactCard } from "@/components/contact-card";
 import { useT } from "@/lib/i18n";
-import { useShortlist } from "@/lib/use-shortlist";
+import { useMemberShortlist } from "@/lib/member-shortlist";
 import { api } from "@/lib/api";
 import type { ProfileDetail } from "@/lib/types";
 
@@ -39,20 +40,12 @@ function Row({ label, value }: { label: string; value?: string | number | null }
 
 export function ProfileDetailView({ p }: { p: ProfileDetail }) {
   const { t } = useT();
-  const shortlist = useShortlist();
-  const saved = shortlist.has(p.id);
+  const { has, toggle } = useMemberShortlist();
+  const saved = has(p.id);
 
   const [open, setOpen] = useState(false);
   const [sending, setSending] = useState(false);
   const [form, setForm] = useState({ fromName: "", fromMobile: "", message: "" });
-
-  function toggleSave() {
-    const nowSaved = shortlist.toggle({
-      id: p.id, fullName: p.fullName, referenceId: p.referenceId, gender: p.gender,
-      age: p.age, congregation: p.congregation, denomination: p.denomination, mainPhotoUrl: p.mainPhotoUrl,
-    });
-    toast.success(nowSaved ? t("sl_added") : t("sl_removed"));
-  }
 
   async function sendInterest() {
     if (!form.fromName.trim()) return toast.error(t("ei_name_req"));
@@ -92,7 +85,7 @@ export function ProfileDetailView({ p }: { p: ProfileDetail }) {
             </Button>
             <Button
               variant="outline"
-              onClick={toggleSave}
+              onClick={() => toggle(p)}
               className={saved ? "border-gold bg-gold/10 text-maroon" : ""}
             >
               {saved ? t("shortlisted") : t("shortlist")}
@@ -102,7 +95,7 @@ export function ProfileDetailView({ p }: { p: ProfileDetail }) {
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogContent className="sm:max-w-md">
               <DialogHeader>
-                <DialogTitle>{t("ei_title")} — {p.fullName}</DialogTitle>
+                <DialogTitle>{t("ei_title")} - {p.fullName}</DialogTitle>
                 <DialogDescription>{t("ei_intro")}</DialogDescription>
               </DialogHeader>
               <div className="space-y-4 py-2">
@@ -138,6 +131,8 @@ export function ProfileDetailView({ p }: { p: ProfileDetail }) {
             {t("profile_id")} {p.referenceId} · {t(p.gender === "Female" ? "bride" : "groom")}
             {p.age ? ` · ${p.age} ${t("years")}` : ""}
           </p>
+
+          <ContactCard profileId={p.id} />
 
           <Card className="mb-4 p-6">
             <h3 className="text-lg font-semibold text-maroon">{t("d_basic")}</h3>

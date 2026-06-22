@@ -1,5 +1,8 @@
 import type {
   AdminUser,
+  ContactRequest,
+  ContactRequestStatus,
+  ContactReveal,
   CreateInterestInput,
   CreateProfileInput,
   CreateUserInput,
@@ -40,6 +43,7 @@ export interface BrowseParams {
   denomination?: string;
   congregation?: string;
   status?: string;
+  live?: boolean;
   page?: number;
   pageSize?: number;
 }
@@ -69,14 +73,29 @@ export const api = {
     return http<MemberValidation>(`/members/validate?membershipNo=${encodeURIComponent(membershipNo)}`);
   },
 
+  getShortlist(memberId: string): Promise<ProfileListItem[]> {
+    return http<ProfileListItem[]>(`/members/${memberId}/shortlist`);
+  },
+
+  addShortlist(memberId: string, profileId: string): Promise<void> {
+    return http<void>(`/members/${memberId}/shortlist`, {
+      method: "POST",
+      body: JSON.stringify({ profileId }),
+    });
+  },
+
+  removeShortlist(memberId: string, profileId: string): Promise<void> {
+    return http<void>(`/members/${memberId}/shortlist/${profileId}`, { method: "DELETE" });
+  },
+
   getStats(): Promise<ProfileStats> {
     return http<ProfileStats>(`/profiles/stats`);
   },
 
-  setStatus(id: string, status: ProfileStatus): Promise<void> {
+  setStatus(id: string, status: ProfileStatus, note?: string): Promise<void> {
     return http<void>(`/profiles/${id}/status`, {
       method: "PATCH",
-      body: JSON.stringify({ status }),
+      body: JSON.stringify({ status, note }),
     });
   },
 
@@ -109,10 +128,37 @@ export const api = {
     });
   },
 
+  // ---- Contact-reveal requests ----
+  getContact(profileId: string, viewerMemberId: string): Promise<ContactReveal> {
+    return http<ContactReveal>(`/profiles/${profileId}/contact?viewerMemberId=${encodeURIComponent(viewerMemberId)}`);
+  },
+
+  requestContact(profileId: string, requesterMemberId: string): Promise<ContactRequest> {
+    return http<ContactRequest>(`/profiles/${profileId}/contact-requests`, {
+      method: "POST",
+      body: JSON.stringify({ requesterMemberId }),
+    });
+  },
+
+  getIncomingContactRequests(memberId: string): Promise<ContactRequest[]> {
+    return http<ContactRequest[]>(`/members/${memberId}/contact-requests/incoming`);
+  },
+
+  getOutgoingContactRequests(memberId: string): Promise<ContactRequest[]> {
+    return http<ContactRequest[]>(`/members/${memberId}/contact-requests/outgoing`);
+  },
+
+  setContactRequestStatus(id: string, memberId: string, status: ContactRequestStatus): Promise<void> {
+    return http<void>(`/contact-requests/${id}/status`, {
+      method: "PATCH",
+      body: JSON.stringify({ memberId, status }),
+    });
+  },
+
   async uploadPhoto(file: File): Promise<{ url: string }> {
     const fd = new FormData();
     fd.append("file", file);
-    // No Content-Type header — the browser sets the multipart boundary itself.
+    // No Content-Type header - the browser sets the multipart boundary itself.
     const res = await fetch(`${BASE}/uploads/photo`, { method: "POST", body: fd });
     if (!res.ok) throw new ApiError(res.status, (await res.text().catch(() => "")) || res.statusText);
     return (await res.json()) as { url: string };

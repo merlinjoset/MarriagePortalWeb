@@ -5,18 +5,20 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { MobileNav } from "@/components/mobile-nav";
 import { useT } from "@/lib/i18n";
-import { useShortlist } from "@/lib/use-shortlist";
+import { useMemberShortlist } from "@/lib/member-shortlist";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
   const { t, lang, setLang } = useT();
-  const { count } = useShortlist();
+  const { count, member, signOut, openSignIn } = useMemberShortlist();
 
   const nav = [
     { href: "/", label: t("nav_home") },
     { href: "/browse", label: t("nav_browse") },
     { href: "/how-it-works", label: t("nav_how") },
     { href: "/shortlist", label: t("nav_shortlist"), badge: count },
+    // Contact-request approvals are only meaningful once signed in.
+    ...(member ? [{ href: "/requests", label: t("nav_requests") }] : []),
     { href: "/register", label: t("nav_register") },
   ];
 
@@ -71,6 +73,22 @@ export function SiteHeader() {
             </button>
           ))}
         </div>
+
+        {/* Member sign-in / account */}
+        {member ? (
+          <div className="hidden items-center gap-2 sm:flex">
+            <span className="max-w-[120px] truncate text-[13px] font-semibold opacity-90" title={member.name}>
+              {member.name}
+            </span>
+            <button onClick={signOut} className="rounded-lg px-2.5 py-1.5 text-[12.5px] font-semibold opacity-80 hover:bg-white/10 hover:opacity-100">
+              {t("signout")}
+            </button>
+          </div>
+        ) : (
+          <button onClick={openSignIn} className="hidden rounded-lg px-3 py-2 text-sm font-semibold opacity-90 hover:bg-white/10 hover:opacity-100 sm:block">
+            {t("nav_signin")}
+          </button>
+        )}
 
         <Button
           render={<Link href="/register" />}

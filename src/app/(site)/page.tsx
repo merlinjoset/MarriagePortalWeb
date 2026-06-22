@@ -14,7 +14,7 @@ export const dynamic = "force-dynamic";
 async function FeaturedProfiles() {
   let items;
   try {
-    items = (await api.browseProfiles({ pageSize: 3 })).items;
+    items = (await api.browseProfiles({ pageSize: 3, live: true })).items;
   } catch {
     return (
       <p className="text-center text-muted-foreground">

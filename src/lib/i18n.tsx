@@ -17,12 +17,12 @@ const en: Dict = {
   create_profile: "Create Profile",
 
   // hero
-  hero_verse: "“What God has joined together…” — Mark 10:9",
+  hero_verse: "“What God has joined together…” - Mark 10:9",
   hero_title_a: "A trusted matrimony service for our ",
   hero_title_em: "CSI Tamil parish",
   hero_title_b: " family",
   hero_lead:
-    "A faith-centred space to find a life partner within the Christian community — built on shared faith, family values, and parish fellowship. With Christ at the centre.",
+    "A faith-centred space to find a life partner within the Christian community - built on shared faith, family values, and parish fellowship. With Christ at the centre.",
   register_free: "Register Free",
 
   // stats
@@ -62,7 +62,7 @@ const en: Dict = {
 
   // scripture
   psalm: "For you have been my hope, Sovereign Lord, my confidence since my youth.",
-  psalm_ref: "— Psalm 71:5",
+  psalm_ref: "- Psalm 71:5",
 
   // featured / browse
   recent_h: "Recently joined",
@@ -93,7 +93,7 @@ const en: Dict = {
   shortlist: "☆ Shortlist",
   shortlisted: "★ Shortlisted",
   ei_title: "Express Interest",
-  ei_intro: "Leave your name and contact — the parish office will share it with the member's family only if they accept.",
+  ei_intro: "Leave your name and contact - the parish office will share it with the member's family only if they accept.",
   ei_name: "Your name *",
   ei_mobile: "Your mobile *",
   ei_message: "Message (optional)",
@@ -108,10 +108,19 @@ const en: Dict = {
   sl_removed: "Removed from your shortlist.",
   nav_shortlist: "Shortlist",
   sl_h: "Your shortlist",
-  sl_sub: "Profiles you saved on this device.",
+  sl_sub: "Profiles you saved to your member account.",
   sl_empty: "Your shortlist is empty. Tap ☆ Shortlist on a profile to save it here.",
   sl_remove: "Remove",
   sl_view: "View",
+  nav_signin: "Sign in",
+  signout: "Sign out",
+  signin_title: "Member sign in",
+  signin_intro: "Enter your parish membership card number to access your saved shortlist on any device.",
+  signin_btn: "Sign in",
+  signed_in_as: "Signed in",
+  toast_signed_in: "Signed in",
+  toast_signed_out: "Signed out.",
+  sl_signin_prompt: "Sign in with your membership card to save profiles and see them on any device.",
   d_basic: "Basic details",
   d_age_height: "Age / Height",
   d_marital: "Marital status",
@@ -130,9 +139,41 @@ const en: Dict = {
   d_mother: "Mother",
   not_found: "Profile not found.",
 
+  // contact number reveal
+  c_title: "Contact number",
+  c_locked: "Shared only after the member approves your request.",
+  c_signin: "Sign in to request",
+  c_request: "🔒 Request contact number",
+  c_requesting: "Sending…",
+  c_pending: "⏳ Awaiting the member's approval.",
+  c_declined: "The member declined to share their contact.",
+  c_owner_note: "This is your profile - your contact number.",
+  c_req_sent: "Request sent. The member will be asked to approve.",
+  c_req_err: "Could not send the request. Is the API running?",
+
+  // contact requests page
+  nav_requests: "Requests",
+  rq_h: "Contact requests",
+  rq_sub: "Approve or decline members asking to see your contact number.",
+  rq_incoming: "Requests to you",
+  rq_outgoing: "Your requests",
+  rq_empty_in: "No one has requested your contact number yet.",
+  rq_empty_out: "You haven't requested anyone's contact number yet.",
+  rq_approve: "Approve",
+  rq_decline: "Decline",
+  rq_approved: "Approved",
+  rq_declined: "Declined",
+  rq_pending: "Pending",
+  rq_approve_ok: "Approved - your number is now shared with them.",
+  rq_decline_ok: "Request declined.",
+  rq_action_err: "Action failed. Is the API running?",
+  rq_signin: "Sign in with your membership card to see your contact requests.",
+  rq_wants: "asks to see the contact for",
+  rq_youasked: "You asked to see the contact for",
+
   // how it works
   how_h: "How it works",
-  how_sub: "Four simple, dignified steps — guided by your parish.",
+  how_sub: "Four simple, dignified steps - guided by your parish.",
   s1t: "Register",
   s1d: "Create a profile with your faith, family and education details. Parents may register on behalf.",
   s2t: "Parish verifies",
@@ -140,14 +181,14 @@ const en: Dict = {
   s3t: "Discover & connect",
   s3d: "Search matches and express interest. Contact stays private until both agree.",
   s4t: "Meet with blessing",
-  s4d: "Families meet with the guidance of your presbyter — towards holy matrimony.",
+  s4d: "Families meet with the guidance of your presbyter - towards holy matrimony.",
   promise:
     "Our promise: a respectful, faith-centred space where every member is honoured equally. We are one body in Christ (1 Corinthians 12:12).",
 
   // register
   reg_h: "Create your profile",
   reg_sub: "Free for members of CSI Tamil Parish, Dubai. Fields marked * are required.",
-  reg_note: "🕊️ We celebrate unity in Christ — every member of our parish family is honoured equally.",
+  reg_note: "🕊️ We celebrate unity in Christ - every member of our parish family is honoured equally.",
   lg_membership: "Parish membership",
   l_membership: "Membership card number *",
   ph_membership: "e.g. CSI-DXB-1001",
@@ -203,7 +244,7 @@ const en: Dict = {
   // footer
   foot_about: "A faith-centred matrimony ministry serving the CSI Tamil parish community. One body in Christ.",
   foot_heritage:
-    "⛪ The mother church of the CSI Tamil congregations in the UAE — based in Dubai, with branches in Fujairah and Ras Al Khaimah.",
+    "⛪ The mother church of the CSI Tamil congregations in the UAE - based in Dubai, with branches in Fujairah and Ras Al Khaimah.",
   foot_office: "Parish office",
   foot_explore: "Explore",
   foot_copy: "© 2026 CSI Tamil Parish Matrimony Ministry",
@@ -219,12 +260,12 @@ const ta: Dict = {
   nav_register: "பதிவு செய்க",
   create_profile: "சுயவிவரம் உருவாக்கு",
 
-  hero_verse: "“கடவுள் இணைத்ததை மனிதன் பிரிக்காதிருப்பானாக” — மாற்கு 10:9",
+  hero_verse: "“கடவுள் இணைத்ததை மனிதன் பிரிக்காதிருப்பானாக” - மாற்கு 10:9",
   hero_title_a: "நமது ",
   hero_title_em: "CSI தமிழ் திருச்சபை",
   hero_title_b: " குடும்பத்திற்கான நம்பகமான திருமணச் சேவை",
   hero_lead:
-    "கிறிஸ்தவ சமூகத்திற்குள் வாழ்க்கைத் துணையைக் கண்டடைய ஒரு விசுவாச மையமான இடம் — பகிர்ந்த விசுவாசம், குடும்ப விழுமியங்கள், திருச்சபை ஐக்கியத்தின் அடிப்படையில். கிறிஸ்துவே மையம்.",
+    "கிறிஸ்தவ சமூகத்திற்குள் வாழ்க்கைத் துணையைக் கண்டடைய ஒரு விசுவாச மையமான இடம் - பகிர்ந்த விசுவாசம், குடும்ப விழுமியங்கள், திருச்சபை ஐக்கியத்தின் அடிப்படையில். கிறிஸ்துவே மையம்.",
   register_free: "இலவசமாக பதிவு செய்க",
 
   stat_verified: "சரிபார்க்கப்பட்ட சுயவிவரங்கள்",
@@ -260,7 +301,7 @@ const ta: Dict = {
   f6d: "கூட்டு CSI திருச்சபை உறுப்பினர்களுக்கு கட்டணமில்லை.",
 
   psalm: "ஆண்டவராகிய கர்த்தாவே, நீரே என் நம்பிக்கை; என் இளமைமுதல் நீரே என் பற்றுக்கோடு.",
-  psalm_ref: "— சங்கீதம் 71:5",
+  psalm_ref: "- சங்கீதம் 71:5",
 
   recent_h: "சமீபத்தில் இணைந்தவர்கள்",
   recent_sub: "எங்கள் புதிய சுயவிவரங்களில் சில.",
@@ -288,7 +329,7 @@ const ta: Dict = {
   shortlist: "☆ பட்டியலில் சேர்",
   shortlisted: "★ பட்டியலில் உள்ளது",
   ei_title: "விருப்பம் தெரிவி",
-  ei_intro: "உங்கள் பெயரையும் தொடர்பையும் பதிவு செய்யவும் — அவர்கள் ஏற்றால் மட்டுமே திருச்சபை அலுவலகம் அதை குடும்பத்துடன் பகிரும்.",
+  ei_intro: "உங்கள் பெயரையும் தொடர்பையும் பதிவு செய்யவும் - அவர்கள் ஏற்றால் மட்டுமே திருச்சபை அலுவலகம் அதை குடும்பத்துடன் பகிரும்.",
   ei_name: "உங்கள் பெயர் *",
   ei_mobile: "உங்கள் கைபேசி *",
   ei_message: "செய்தி (விருப்பத்திற்கு)",
@@ -303,10 +344,19 @@ const ta: Dict = {
   sl_removed: "உங்கள் பட்டியலில் இருந்து நீக்கப்பட்டது.",
   nav_shortlist: "பட்டியல்",
   sl_h: "உங்கள் பட்டியல்",
-  sl_sub: "இந்த சாதனத்தில் நீங்கள் சேமித்த சுயவிவரங்கள்.",
+  sl_sub: "உங்கள் உறுப்பினர் கணக்கில் சேமித்த சுயவிவரங்கள்.",
   sl_empty: "உங்கள் பட்டியல் காலியாக உள்ளது. ஒரு சுயவிவரத்தில் ☆ பட்டியலில் சேர் என்பதை அழுத்தவும்.",
   sl_remove: "நீக்கு",
   sl_view: "பார்",
+  nav_signin: "உள்நுழை",
+  signout: "வெளியேறு",
+  signin_title: "உறுப்பினர் உள்நுழைவு",
+  signin_intro: "எந்த சாதனத்திலும் உங்கள் சேமித்த பட்டியலை அணுக உங்கள் திருச்சபை உறுப்பினர் அட்டை எண்ணை உள்ளிடவும்.",
+  signin_btn: "உள்நுழை",
+  signed_in_as: "உள்நுழைந்துள்ளீர்கள்",
+  toast_signed_in: "உள்நுழைந்தது",
+  toast_signed_out: "வெளியேறியது.",
+  sl_signin_prompt: "சுயவிவரங்களைச் சேமித்து எந்த சாதனத்திலும் பார்க்க உங்கள் உறுப்பினர் அட்டையுடன் உள்நுழையவும்.",
   d_basic: "அடிப்படை விவரங்கள்",
   d_age_height: "வயது / உயரம்",
   d_marital: "திருமண நிலை",
@@ -325,8 +375,40 @@ const ta: Dict = {
   d_mother: "தாய்",
   not_found: "சுயவிவரம் கிடைக்கவில்லை.",
 
+  // contact number reveal
+  c_title: "தொடர்பு எண்",
+  c_locked: "உறுப்பினர் உங்கள் கோரிக்கையை அங்கீகரித்த பிறகே பகிரப்படும்.",
+  c_signin: "கோர உள்நுழையவும்",
+  c_request: "🔒 தொடர்பு எண்ணைக் கோரு",
+  c_requesting: "அனுப்புகிறது…",
+  c_pending: "⏳ உறுப்பினரின் அங்கீகாரத்திற்காகக் காத்திருக்கிறது.",
+  c_declined: "உறுப்பினர் தொடர்பைப் பகிர மறுத்துவிட்டார்.",
+  c_owner_note: "இது உங்கள் சுயவிவரம் - உங்கள் தொடர்பு எண்.",
+  c_req_sent: "கோரிக்கை அனுப்பப்பட்டது. உறுப்பினர் அங்கீகரிக்கக் கேட்கப்படுவார்.",
+  c_req_err: "கோரிக்கையை அனுப்ப முடியவில்லை. API இயங்குகிறதா?",
+
+  // contact requests page
+  nav_requests: "கோரிக்கைகள்",
+  rq_h: "தொடர்பு கோரிக்கைகள்",
+  rq_sub: "உங்கள் தொடர்பு எண்ணைப் பார்க்கக் கோரும் உறுப்பினர்களை அங்கீகரிக்க அல்லது மறுக்கவும்.",
+  rq_incoming: "உங்களுக்கான கோரிக்கைகள்",
+  rq_outgoing: "உங்கள் கோரிக்கைகள்",
+  rq_empty_in: "இதுவரை யாரும் உங்கள் தொடர்பு எண்ணைக் கோரவில்லை.",
+  rq_empty_out: "நீங்கள் இதுவரை யாருடைய தொடர்பு எண்ணையும் கோரவில்லை.",
+  rq_approve: "அங்கீகரி",
+  rq_decline: "மறு",
+  rq_approved: "அங்கீகரிக்கப்பட்டது",
+  rq_declined: "மறுக்கப்பட்டது",
+  rq_pending: "நிலுவையில்",
+  rq_approve_ok: "அங்கீகரிக்கப்பட்டது - உங்கள் எண் இப்போது அவர்களுடன் பகிரப்படுகிறது.",
+  rq_decline_ok: "கோரிக்கை மறுக்கப்பட்டது.",
+  rq_action_err: "செயல் தோல்வியடைந்தது. API இயங்குகிறதா?",
+  rq_signin: "உங்கள் தொடர்பு கோரிக்கைகளைப் பார்க்க உறுப்பினர் அட்டையுடன் உள்நுழையவும்.",
+  rq_wants: "தொடர்பைப் பார்க்கக் கோருகிறார்:",
+  rq_youasked: "நீங்கள் தொடர்பைப் பார்க்கக் கோரியது:",
+
   how_h: "எப்படி செயல்படுகிறது",
-  how_sub: "எளிய, கண்ணியமான நான்கு படிகள் — உங்கள் திருச்சபையின் வழிகாட்டுதலுடன்.",
+  how_sub: "எளிய, கண்ணியமான நான்கு படிகள் - உங்கள் திருச்சபையின் வழிகாட்டுதலுடன்.",
   s1t: "பதிவு செய்க",
   s1d: "உங்கள் விசுவாசம், குடும்பம், கல்வி விவரங்களுடன் சுயவிவரம் உருவாக்குங்கள். பெற்றோர் சார்பாகவும் பதிவு செய்யலாம்.",
   s2t: "திருச்சபை சரிபார்க்கிறது",
@@ -334,13 +416,13 @@ const ta: Dict = {
   s3t: "கண்டறிந்து இணையுங்கள்",
   s3d: "பொருத்தங்களைத் தேடி விருப்பம் தெரிவியுங்கள். இருவரும் சம்மதிக்கும் வரை தொடர்பு ரகசியமாக இருக்கும்.",
   s4t: "ஆசீர்வாதத்துடன் சந்திப்பு",
-  s4d: "உங்கள் போதகரின் வழிகாட்டுதலுடன் குடும்பங்கள் சந்திக்கும் — புனித திருமணத்தை நோக்கி.",
+  s4d: "உங்கள் போதகரின் வழிகாட்டுதலுடன் குடும்பங்கள் சந்திக்கும் - புனித திருமணத்தை நோக்கி.",
   promise:
     "எங்கள் உறுதிமொழி: ஒவ்வொரு உறுப்பினரும் சமமாக மதிக்கப்படும் மரியாதையான, விசுவாச மையமான இடம். நாம் கிறிஸ்துவில் ஒரே சரீரம் (1 கொரிந்தியர் 12:12).",
 
   reg_h: "உங்கள் சுயவிவரத்தை உருவாக்குங்கள்",
   reg_sub: "CSI தமிழ் திருச்சபை, துபாய் உறுப்பினர்களுக்கு இலவசம். * குறியிட்ட புலங்கள் அவசியம்.",
-  reg_note: "🕊️ கிறிஸ்துவில் ஒற்றுமையைக் கொண்டாடுகிறோம் — நமது திருச்சபை குடும்பத்தின் ஒவ்வொரு உறுப்பினரும் சமமாக மதிக்கப்படுகிறார்.",
+  reg_note: "🕊️ கிறிஸ்துவில் ஒற்றுமையைக் கொண்டாடுகிறோம் - நமது திருச்சபை குடும்பத்தின் ஒவ்வொரு உறுப்பினரும் சமமாக மதிக்கப்படுகிறார்.",
   lg_membership: "திருச்சபை உறுப்பினர்",
   l_membership: "உறுப்பினர் அட்டை எண் *",
   ph_membership: "எ.கா. CSI-DXB-1001",
@@ -395,7 +477,7 @@ const ta: Dict = {
 
   foot_about: "CSI தமிழ் திருச்சபை சமூகத்திற்கு சேவை செய்யும் விசுவாச மைய திருமண ஊழியம். கிறிஸ்துவில் ஒரே சரீரம்.",
   foot_heritage:
-    "⛪ ஐக்கிய அரபு அமீரகத்தில் உள்ள CSI தமிழ் சபைகளின் தாய் திருச்சபை — துபாயில் அமைந்துள்ளது, புஜைரா மற்றும் ராஸ் அல் கைமாவில் கிளைகளுடன்.",
+    "⛪ ஐக்கிய அரபு அமீரகத்தில் உள்ள CSI தமிழ் சபைகளின் தாய் திருச்சபை - துபாயில் அமைந்துள்ளது, புஜைரா மற்றும் ராஸ் அல் கைமாவில் கிளைகளுடன்.",
   foot_office: "திருச்சபை அலுவலகம்",
   foot_explore: "ஆராயுங்கள்",
   foot_copy: "© 2026 CSI தமிழ் திருச்சபை திருமண ஊழியம்",

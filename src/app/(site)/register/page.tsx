@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/select";
 import { api } from "@/lib/api";
 import { useT } from "@/lib/i18n";
-import { CONGREGATIONS, DENOMINATIONS, type CreateProfileInput, type Gender, type MemberValidation } from "@/lib/types";
+import { CONGREGATIONS, COUNTRY_CODES, DENOMINATIONS, type CreateProfileInput, type Gender, type MemberValidation } from "@/lib/types";
 
 const empty: CreateProfileInput = {
   membershipNo: "",
@@ -59,6 +59,14 @@ export default function RegisterPage() {
   const [uploading, setUploading] = useState(false);
   const [checking, setChecking] = useState(false);
   const [membership, setMembership] = useState<MemberValidation | null>(null);
+  const [dialCode, setDialCode] = useState("+971");
+  const [phone, setPhone] = useState("");
+
+  function updateMobile(code: string, num: string) {
+    setDialCode(code);
+    setPhone(num);
+    set("mobile", num.trim() ? `${code} ${num.trim()}` : "");
+  }
 
   async function validateCard() {
     const card = form.membershipNo.trim();
@@ -67,7 +75,7 @@ export default function RegisterPage() {
     try {
       setMembership(await api.validateMembership(card));
     } catch {
-      setMembership({ valid: false, name: null, congregation: null, message: t("ei_err") });
+      setMembership({ valid: false, memberId: null, name: null, congregation: null, message: t("ei_err") });
     } finally {
       setChecking(false);
     }
@@ -141,7 +149,7 @@ export default function RegisterPage() {
             </div>
             {membership?.valid ? (
               <div className="rounded-lg border border-brand-green/30 bg-brand-green/10 px-3.5 py-2.5 text-sm text-brand-green">
-                {t("m_valid")} — {membership.name}{membership.congregation ? `, ${membership.congregation}` : ""}
+                {t("m_valid")} - {membership.name}{membership.congregation ? `, ${membership.congregation}` : ""}
               </div>
             ) : membership && !membership.valid ? (
               <div className="rounded-lg border border-destructive/30 bg-destructive/5 px-3.5 py-2.5 text-sm text-destructive">
@@ -209,7 +217,24 @@ export default function RegisterPage() {
                 </Select>
               </Field>
               <Field label={t("l_mobile")}>
-                <Input value={form.mobile} onChange={(e) => set("mobile", e.target.value)} placeholder="+971 …" required />
+                <div className="flex gap-2">
+                  <Select value={dialCode} onValueChange={(v) => updateMobile(v ?? "+971", phone)}>
+                    <SelectTrigger className="w-[92px] shrink-0"><SelectValue /></SelectTrigger>
+                    <SelectContent>
+                      {COUNTRY_CODES.map((c) => (
+                        <SelectItem key={c.code} value={c.code}>{c.label}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <Input
+                    type="tel"
+                    className="flex-1"
+                    value={phone}
+                    onChange={(e) => updateMobile(dialCode, e.target.value)}
+                    placeholder="50 123 4567"
+                    required
+                  />
+                </div>
               </Field>
             </div>
           </fieldset>
