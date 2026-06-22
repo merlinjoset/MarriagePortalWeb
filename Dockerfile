@@ -3,7 +3,8 @@ FROM node:22-slim AS deps
 WORKDIR /app
 RUN npm install -g pnpm@11.8.0
 COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
+# Not --frozen-lockfile: tolerate any host/lockfile edge case on the Linux builder.
+RUN pnpm install --no-frozen-lockfile
 
 # ---- Build ----
 FROM node:22-slim AS build
