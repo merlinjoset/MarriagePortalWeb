@@ -1,14 +1,14 @@
 # ---- Dependencies ----
 FROM node:22-slim AS deps
 WORKDIR /app
-RUN corepack enable
+RUN npm install -g pnpm@11.8.0
 COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile
 
 # ---- Build ----
 FROM node:22-slim AS build
 WORKDIR /app
-RUN corepack enable
+RUN npm install -g pnpm@11.8.0
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 # NEXT_PUBLIC_* values are inlined at build time, so the API URL must be known here.
