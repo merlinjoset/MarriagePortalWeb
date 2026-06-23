@@ -23,7 +23,7 @@ export function MobileNav() {
     { href: "/how-it-works", label: t("nav_how") },
     { href: "/shortlist", label: t("nav_shortlist") },
     ...(member ? [{ href: "/requests", label: t("nav_requests") }] : []),
-    { href: "/register", label: t("nav_register") },
+    ...(member ? [] : [{ href: "/register", label: t("nav_register") }]),
   ];
   return (
     <Sheet open={open} onOpenChange={setOpen}>
