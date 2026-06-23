@@ -12,8 +12,8 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 # NEXT_PUBLIC_* values are inlined at build time, so the API URL must be known here.
-# Render passes service env vars to the build; declare it as a build arg.
-ARG NEXT_PUBLIC_API_URL
+# Defaults to the live API; override with a Render build arg / env var if it changes.
+ARG NEXT_PUBLIC_API_URL=https://backendportalapi.onrender.com/api
 ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 RUN npm run build
 
