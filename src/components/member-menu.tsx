@@ -49,10 +49,9 @@ export function MemberMenu() {
         aria-expanded={open}
         className="flex items-center gap-2 rounded-full py-1 pl-1 pr-2.5 text-sm font-semibold text-white/90 transition hover:bg-white/10 hover:text-white"
       >
-        <span className="grid size-7 place-items-center rounded-full bg-gold text-[12px] font-bold text-maroon">
+        <span className="grid size-8 place-items-center rounded-full bg-gold text-[12.5px] font-bold text-maroon">
           {initials(member.name)}
         </span>
-        <span className="hidden max-w-[120px] truncate xl:block">{member.name}</span>
         <ChevronDown className={cn("size-4 shrink-0 transition-transform", open && "rotate-180")} />
       </button>
 
