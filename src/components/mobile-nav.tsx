@@ -28,7 +28,7 @@ export function MobileNav() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
-        className="grid size-9 place-items-center rounded-lg text-white hover:bg-white/10 lg:hidden"
+        className="grid size-9 place-items-center rounded-lg text-white hover:bg-white/10 xl:hidden"
         aria-label="Open menu"
       >
         <Menu className="size-5" />

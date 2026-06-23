@@ -28,22 +28,22 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 bg-gradient-to-b from-maroon to-maroon-2 text-white shadow-md">
       <div className="mx-auto flex h-[68px] max-w-6xl items-center gap-3 px-5">
         <MobileNav />
-        <Link href="/" className="flex items-center gap-3">
+        <Link href="/" className="flex shrink-0 items-center gap-3">
           <Image
             src="/emblem.jpg"
             alt="Church of South India"
             width={44}
             height={44}
-            className="rounded-full bg-white p-[3px] shadow"
+            className="shrink-0 rounded-full bg-white p-[3px] shadow"
             priority
           />
           <span className="leading-tight">
-            <span className="block text-[19px] font-bold tracking-wide">{t("brand")}</span>
-            <span className="block text-[11px] opacity-85">{t("brand_sub")}</span>
+            <span className="block whitespace-nowrap text-[19px] font-bold tracking-wide">{t("brand")}</span>
+            <span className="block whitespace-nowrap text-[11px] opacity-85">{t("brand_sub")}</span>
           </span>
         </Link>
 
-        <nav className="ml-5 hidden items-center gap-0.5 lg:flex">
+        <nav className="ml-5 hidden items-center gap-0.5 xl:flex">
           {nav.map((n) => (
             <Link
               key={n.href}
